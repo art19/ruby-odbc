@@ -1899,6 +1899,7 @@ get_err_or_info(SQLHENV henv, SQLHDBC hdbc, SQLHSTMT hstmt, int isinfo)
 	msg[SQL_MAX_MESSAGE_LENGTH - 1] = '\0';
 	switch (err) {
 	case SQL_SUCCESS:
+	case SQL_SUCCESS_WITH_INFO:
 #ifdef UNICODE
 	    v = uc_str_new2(state);
 #else
