@@ -4239,25 +4239,25 @@ make_coltypes(SQLHSTMT hstmt, int ncols, char **msgp)
 	    }
 	    break;
 #endif
-    case SQL_DECIMAL:
-    case SQL_NUMERIC:
-        if ((size == 0) || (size > SEGSIZE)) {
-            size = SQL_NO_TOTAL;
-        }
+	case SQL_DECIMAL:
+	case SQL_NUMERIC:
+		if ((size == 0) || (size > SEGSIZE)) {
+			size = SQL_NO_TOTAL;
+		}
 #ifdef UNICODE
-        type = SQL_C_WCHAR;
-        if (size != SQL_NO_TOTAL) {
-            size += 2;                      // sign + decimal point
-            size *= sizeof (SQLWCHAR);
-            size += sizeof (SQLWCHAR);      // null terminator
-        }
+		type = SQL_C_WCHAR;
+		if (size != SQL_NO_TOTAL) {
+			size += 2;                      // sign + decimal point
+			size *= sizeof (SQLWCHAR);
+			size += sizeof (SQLWCHAR);      // null terminator
+		}
 #else
-        type = SQL_C_CHAR;
-        if (size != SQL_NO_TOTAL) {
-            size += 3;                      // sign + decimal point + null terminator
-        }
+		type = SQL_C_CHAR;
+		if (size != SQL_NO_TOTAL) {
+			size += 3;                      // sign + decimal point + null terminator
+		}
 #endif
-        break;
+		break;
 	default:
 	    if ((size == 0) || (size > SEGSIZE)) {
 		size = SQL_NO_TOTAL;
